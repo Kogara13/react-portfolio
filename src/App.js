@@ -6,14 +6,19 @@ import './App.css';
 
 const App = () => {
 
-    const [position, setPosition] = useState({ x: 0, y: 0});
-    /*const [gradient, setGradient] = useState('linear-gradient(to right, #00b4bd, #0083b0');*/
-    const [gradient, setGradient] = useState('linear-gradient(0deg, red, yellow');
+    
+    
+    
+    
 
+
+    //1. Get Mouse Position
+    const [position, setPosition] = useState({ x: 0, y: 0});
     useEffect(() => {
         function handleMouseMove(e) {
             setPosition({ x: e.clientX, y: e.clientY})
         }
+
 
         window.addEventListener("mousemove", handleMouseMove);
 
@@ -22,22 +27,50 @@ const App = () => {
         };
     }, []);
 
+   
+    //2. Center of Screen
+    function getWindowSize() {
+        const {innerWidth, innerHeight} = window;
+        return {innerWidth, innerHeight};
+    }
+    const [windowCenter, setWindowCenter] = useState({ x: 0, y: 0});
 
     useEffect(() => {
-        const distanceFromTop = position.y;
-        const distanceFromBottom = window.innerHeight - position.y;
-        const distanceFromLeft = position.x;
-        const distanceFromRight = window.innerWidth - position.x;
+        function handleWindowResize() {
+            setWindowCenter({ x: (getWindowSize().innerWidth) / 2, y: (getWindowSize.innerHeight) / 2 });
+        }
 
-        const 
+        window.addEventListener('resize', handleWindowResize);
 
-        /*const newGradient = `linear-gradient(to top, #00b4db, #0083b0 ${distanceFromTop}px), 
-                            linear-gradient(to bottom, #00b4db, #0083b0 ${distanceFromBottom}px),
-                            linear-gradient(to left, #00b4db, #0083b0 ${distanceFromLeft}px), 
-                            linear-gradient(to right, #00b4db, #0083b0 ${distanceFromRight}px)`;*/
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
+    }, []);
 
-        setGradient(newGradient);
-    }, [position]);
+    
+
+    //3. Angle and gradient
+    const [angle, setAngle] = useState(0);
+    const [gradient, setGradient] = useState('linear-gradient(0deg, red, yellow');
+
+    useEffect(() => {
+        function handleAngleChange() {
+            const hypotenuse = Math.sqrt(Math.pow(position.x - windowCenter.x, 2) + Math.pow(position.y - windowCenter.y,2));
+            const distance = Math.abs(position.x - windowCenter.x);
+
+            setAngle(Math.asin(distance/hypotenuse));
+            const angleInDegrees = angle * (180/Math.PI);
+            console.log(angleInDegrees); 
+            const newGradient = 'linear-gradient({angleInDegrees}deg, red, yellow)';
+            setGradient(newGradient);
+        }
+
+        return () => {
+            window.addEventListener('mousemove', handleAngleChange);
+        };
+    }, [position, windowCenter, angle]);
+
+
 
     const [status, setStatus] = useState('off');
 
