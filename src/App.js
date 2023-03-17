@@ -6,38 +6,17 @@ import './App.css';
 
 const App = () => {
 
-    
-    
-    
-    
-
-
-    //1. Get Mouse Position
-    const [position, setPosition] = useState({ x: 0, y: 0});
-    useEffect(() => {
-        function handleMouseMove(e) {
-            setPosition({ x: e.clientX, y: e.clientY})
-        }
-
-
-        window.addEventListener("mousemove", handleMouseMove);
-
-        return () => {
-            window.removeEventListener("mousemove", handleMouseMove);
-        };
-    }, []);
-
-   
-    //2. Center of Screen
+    //1. Center of Screen
     function getWindowSize() {
         const {innerWidth, innerHeight} = window;
         return {innerWidth, innerHeight};
     }
-    const [windowCenter, setWindowCenter] = useState({ x: 0, y: 0});
+    const [windowCenter, setWindowCenter] = useState({ x: getWindowSize().innerWidth / 2, y: getWindowSize().innerHeight / 2});
 
     useEffect(() => {
         function handleWindowResize() {
-            setWindowCenter({ x: (getWindowSize().innerWidth) / 2, y: (getWindowSize.innerHeight) / 2 });
+            setWindowCenter({ x: (getWindowSize().innerWidth) / 2, y: (getWindowSize().innerHeight) / 2 });
+            console.log(windowCenter.x, windowCenter.y);
         }
 
         window.addEventListener('resize', handleWindowResize);
@@ -45,13 +24,30 @@ const App = () => {
         return () => {
             window.removeEventListener('resize', handleWindowResize);
         };
-    }, []);
+    }, [windowCenter.x, windowCenter.y]);
+
+
+
+     //2. Get Mouse Position
+     const [position, setPosition] = useState({ x: 0, y: 0});
+     useEffect(() => {
+         function handleMouseMove(e) {
+             setPosition({ x: ((e.clientX / window.innerWidth) * 100), y: ((e.clientY / window.innerHeight) * 100)});
+             //console.log(position.x, position.y);
+         }
+ 
+ 
+         window.addEventListener("mousemove", handleMouseMove);
+ 
+         return () => {
+             window.removeEventListener("mousemove", handleMouseMove);
+         };
+     }, [position]);
 
     
 
-    //3. Angle and gradient
-    const [angle, setAngle] = useState(0);
-    const [gradient, setGradient] = useState('linear-gradient(0deg, red, yellow');
+    /*3. Angle and gradient
+    const [gradient, setGradient] = useState('radial-gradient(farthest-side at 50%, red, yellow');
 
     useEffect(() => {
         function handleAngleChange() {
@@ -69,6 +65,30 @@ const App = () => {
             window.addEventListener('mousemove', handleAngleChange);
         };
     }, [position, windowCenter, angle]);
+    */
+
+    const [gradient, setGradient] = useState(400);
+    const [gradientY, setGradientY] = useState(50);
+    useEffect(() => {
+        function handleGradient() {
+            const MaxorMin = [-225, 325];
+            if (position.x < 50)
+                setGradient(MaxorMin[0] - ((position.x - 50) * 1.5));
+            else if (position.x > 50)
+                setGradient(MaxorMin[1] - ((position.x - 50) * 1.5));
+            else
+                setGradient(400);
+            setGradientY(position.y);
+            console.log(gradient);
+        }
+
+        window.addEventListener('mousemove', handleGradient);
+
+        return () => {
+            window.removeEventListener('mousemove', handleGradient);
+        };
+    }, [position, windowCenter, gradient])
+
 
 
 
@@ -83,14 +103,18 @@ const App = () => {
     
    
     const style = {
-        background: gradient,
-        /*backgroundColor: "white",*/
+        /*background: gradient,*/
+        backgroundImage: `radial-gradient(circle at ${gradient}% ${gradientY}%, white, black 75%)`,
         position: "fixed",
         top: 0,
         left: 0,
         right: 0,
         bottom: 0
     }
+
+
+    /*from: { opacity: 0},
+    to { opacity: 1},*/
     
     
 
