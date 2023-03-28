@@ -1,10 +1,23 @@
 import { getRoles } from "@testing-library/react";
 import React from "react";
 import { useState, useEffect, useRef } from "react";
+import { useSpring, animated } from 'react-spring'
 import './App.css';
 
 
 const App = () => {
+
+    const [props, set] = useSpring(() => ({
+        opacity: 0,   
+        backgroundImage: `radial-gradient(circle at ${gradient}% ${gradientY}%, white, black 75%)`,
+        height: "100%",
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        config: { duration: 1000 },
+    }));
 
     //1. Center of Screen
     function getWindowSize() {
@@ -44,40 +57,24 @@ const App = () => {
          };
      }, [position]);
 
-    
-
-    /*3. Angle and gradient
-    const [gradient, setGradient] = useState('radial-gradient(farthest-side at 50%, red, yellow');
-
-    useEffect(() => {
-        function handleAngleChange() {
-            const hypotenuse = Math.sqrt(Math.pow(position.x - windowCenter.x, 2) + Math.pow(position.y - windowCenter.y,2));
-            const distance = Math.abs(position.x - windowCenter.x);
-
-            setAngle(Math.asin(distance/hypotenuse));
-            const angleInDegrees = angle * (180/Math.PI);
-            console.log(angleInDegrees); 
-            const newGradient = 'linear-gradient({angleInDegrees}deg, red, yellow)';
-            setGradient(newGradient);
-        }
-
-        return () => {
-            window.addEventListener('mousemove', handleAngleChange);
-        };
-    }, [position, windowCenter, angle]);
-    */
 
     const [gradient, setGradient] = useState(400);
     const [gradientY, setGradientY] = useState(50);
     useEffect(() => {
         function handleGradient() {
             const MaxorMin = [-225, 325];
-            if (position.x < 50)
+            if (position.x < 50){
+                set({ opacity: 1 });
                 setGradient(MaxorMin[0] - ((position.x - 50) * 1.5));
-            else if (position.x > 50)
+            }
+            else if (position.x > 50) {
+                set({ opacity: 1 });
                 setGradient(MaxorMin[1] - ((position.x - 50) * 1.5));
-            else
+            }
+            else {
+                set({ opacity: 1 });
                 setGradient(400);
+            }
             setGradientY(position.y);
             console.log(gradient);
         }
@@ -87,7 +84,7 @@ const App = () => {
         return () => {
             window.removeEventListener('mousemove', handleGradient);
         };
-    }, [position, windowCenter, gradient])
+    }, [position, windowCenter, gradient, set])
 
 
 
@@ -102,17 +99,22 @@ const App = () => {
     }
     
    
-    const style = {
-        /*background: gradient,*/
+    /*const style = {
+        /*background: gradient,
         backgroundImage: `radial-gradient(circle at ${gradient}% ${gradientY}%, white, black 75%)`,
         position: "fixed",
         top: 0,
         left: 0,
         right: 0,
-        bottom: 0
+        bottom: 0,
+    } */
+
+
+    const styles = {
+        height: "100vh",
+        position: "relative",
+        backgroundColor: "black",
     }
-
-
     /*from: { opacity: 0},
     to { opacity: 1},*/
     
@@ -122,7 +124,8 @@ const App = () => {
 
     return (
     <>
-    <div style={style}>
+    <div style={styles}>
+    <animated.div style={props}>
         <div className="title-section">
             <div className="title-info">
                 <h1>Kieran  O'Gara</h1>
@@ -141,9 +144,9 @@ const App = () => {
             </div>
         </div>
         <footer className="contact">
-            <h2>Contact Me!</h2>
-            
+            <h2>Contact Me!</h2>  
         </footer>
+    </animated.div>
     </div>
     </>     
     );
