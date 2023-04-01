@@ -13,8 +13,10 @@ $personal-selected-color: #8BC6FC;
     box-sizing: border-box;
 }
 
+$MaxOrMin : -225, 325;
+$opacity : 0;
 @function calculateGradient(){
-    $x: $x-position;
+    
 
 }
 
