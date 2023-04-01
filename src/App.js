@@ -2,7 +2,7 @@ import { getRoles } from "@testing-library/react";
 import React from "react";
 import { useState, useEffect, useRef } from "react";
 import { useSpring, animated } from 'react-spring'
-import './App.css';
+import './Styles/App.css';
 
 
 const App = () => {
@@ -10,12 +10,6 @@ const App = () => {
     const [props, set] = useSpring(() => ({
         opacity: 0,   
         backgroundImage: `radial-gradient(circle at ${gradient}% ${gradientY}%, white, black 75%)`,
-        height: "100%",
-        position: "absolute",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
         config: { duration: 1000 },
     }));
 
@@ -124,30 +118,28 @@ const App = () => {
 
     return (
     <>
-    <div style={styles}>
-    <animated.div style={props}>
-        <div className="title-section">
-            <div className="title-info">
-                <h1>Kieran  O'Gara</h1>
-            </div> 
-            <div className="title-info">
-                <h1>Choose a path</h1>
+        <div className="background">
+            <div className="title-section">
+                <div className="title-info">
+                    <h1>Kieran  O'Gara</h1>
+                </div> 
+                <div className="title-info">
+                    <h1>Choose a path</h1>
+                </div>
             </div>
-        </div>
 
-        <div className="button-section">
-            <div className="work">
-                <h3>{status}</h3>
+            <div className="button-section">
+                <div className="button work">
+                    <h3>{status}</h3>
+                </div>
+                <div className="button personal" onClick={handleClick}>
+                    <h3>{status}</h3>
+                </div>
             </div>
-            <div className="personal" onClick={handleClick}>
-                <h3>{status}</h3>
-            </div>
+            <footer className="contact">
+                <h2>Contact Me!</h2>  
+            </footer>
         </div>
-        <footer className="contact">
-            <h2>Contact Me!</h2>  
-        </footer>
-    </animated.div>
-    </div>
     </>     
     );
 }

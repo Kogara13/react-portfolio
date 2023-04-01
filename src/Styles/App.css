@@ -1,0 +1,56 @@
+.background {
+  background-color: #303030;
+  height: 100vh;
+  margin: auto;
+  padding: 0;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.gradient {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0.8;
+}
+
+/*Title/Path Text*/
+.title-section {
+  display: block;
+}
+
+.title-info {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-section {
+  margin-top: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+.button-section .button {
+  display: flex;
+  width: 350px;
+  height: 400px;
+  background-color: #625D5D;
+  border-radius: 10px;
+}
+.button-section .button .work {
+  color: #e6cbcc;
+}
+.button-section .button .personal {
+  color: #8BC6FC;
+}
+
+.contact {
+  margin-top: 125px;
+  text-align: center;
+}/*# sourceMappingURL=App.css.map */
