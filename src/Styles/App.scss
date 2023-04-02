@@ -4,47 +4,28 @@ $button-color: #625D5D;
 $work-selected-color: #e6cbcc;
 $personal-selected-color: #8BC6FC;
 
-.background {
-    background-color: #303030;
-    height: 100vh;
-    margin:auto;
-    padding:0;
-    position: relative;
+body {
+    margin: auto;
+    padding: 0;
     box-sizing: border-box;
+    background-color: #303030;
 }
 
-$MaxOrMin : -225, 325;
-$opacity : 0;
-@function calculateGradient(){
-    
-
-}
-
-.gradient {
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    opacity: 0.8;
-}
-
-
-/*Title/Path Text*/
 .title-section {
     display: block;
+    
+    .title-info {
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
-.title-info {
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 
 .button-section{
-    margin-top: 200px;
+    margin-top: 125px;
     display: flex;
     justify-content: space-around;
     align-items:flex-end;
@@ -52,20 +33,25 @@ $opacity : 0;
 
     .button {
         display: flex;
-        width: 350px;
-        height: 400px;
+        width: 19%;
+        min-width: 360px;
+        max-width: 415px;
+        height: 500px;
+        margin-bottom: 25px;
         background-color: $button-color;
         border-radius: 10px;
         .work {
             color: $work-selected-color;
         }
         .personal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
             color: $personal-selected-color;
         }     
     }
 }
-
-
 
 .contact{
     margin-top: 125px;
