@@ -1,28 +1,14 @@
-.background {
-  background-color: #303030;
-  height: 100vh;
+body {
   margin: auto;
   padding: 0;
-  position: relative;
   box-sizing: border-box;
+  background-color: #303030;
 }
 
-.gradient {
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  opacity: 0.8;
-}
-
-/*Title/Path Text*/
 .title-section {
   display: block;
 }
-
-.title-info {
+.title-section .title-info {
   color: white;
   display: flex;
   justify-content: center;
@@ -30,7 +16,7 @@
 }
 
 .button-section {
-  margin-top: 200px;
+  margin-top: 125px;
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
@@ -38,8 +24,11 @@
 }
 .button-section .button {
   display: flex;
-  width: 350px;
-  height: 400px;
+  width: 19%;
+  min-width: 360px;
+  max-width: 415px;
+  height: 500px;
+  margin-bottom: 25px;
   background-color: #625D5D;
   border-radius: 10px;
 }
@@ -47,6 +36,10 @@
   color: #e6cbcc;
 }
 .button-section .button .personal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   color: #8BC6FC;
 }
 

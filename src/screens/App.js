@@ -1,16 +1,22 @@
-import { getRoles } from "@testing-library/react";
+// import { getRoles } from "@testing-library/react";
 import React from "react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useSpring, animated } from 'react-spring'
-import './Styles/App.css';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import '../Styles/App.css';
 
 
 const App = () => {
+    const [work, setWork] = useSpring(() => ({
+        opacity: 1,
+        transform: 'scale(1)',
+        config: { mass: 1, tension: 170, friction: 26},
+    }));
 
-    const [props, set] = useSpring(() => ({
-        opacity: 0,   
-        backgroundImage: `radial-gradient(circle at ${gradient}% ${gradientY}%, white, black 75%)`,
-        config: { duration: 1000 },
+    const [personal, setPersonal] = useSpring(() => ({
+        opacity: 1,
+        transform: 'scale(1)',
+        config: { mass: 1, tension: 170, friction: 26},
     }));
 
     //1. Center of Screen
@@ -39,8 +45,8 @@ const App = () => {
      const [position, setPosition] = useState({ x: 0, y: 0});
      useEffect(() => {
          function handleMouseMove(e) {
-             setPosition({ x: ((e.clientX / window.innerWidth) * 100), y: ((e.clientY / window.innerHeight) * 100)});
-             //console.log(position.x, position.y);
+            setPosition({ x: ((e.clientX / window.innerWidth) * 100), y: ((e.clientY / window.innerHeight) * 100)});
+            console.log(position.x, position.y);
          }
  
  
@@ -58,17 +64,16 @@ const App = () => {
         function handleGradient() {
             const MaxorMin = [-225, 325];
             if (position.x < 50){
-                set({ opacity: 1 });
                 setGradient(MaxorMin[0] - ((position.x - 50) * 1.5));
             }
             else if (position.x > 50) {
-                set({ opacity: 1 });
                 setGradient(MaxorMin[1] - ((position.x - 50) * 1.5));
             }
-            else {
-                set({ opacity: 1 });
-                setGradient(400);
-            }
+            // else {
+            //     // set({ opacity: 1 });
+            //     setGradient(400);
+            //     set({ opacity: 1 });
+            // }
             setGradientY(position.y);
             console.log(gradient);
         }
@@ -78,7 +83,7 @@ const App = () => {
         return () => {
             window.removeEventListener('mousemove', handleGradient);
         };
-    }, [position, windowCenter, gradient, set])
+    }, [position, gradient])
 
 
 
@@ -93,32 +98,34 @@ const App = () => {
     }
     
    
-    /*const style = {
-        /*background: gradient,
+    const style = {
+        backgroundColor: '#303030',
+        height: '100vh',
+        position: 'relative',
         backgroundImage: `radial-gradient(circle at ${gradient}% ${gradientY}%, white, black 75%)`,
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-    } */
+    } 
 
-
-    const styles = {
-        height: "100vh",
-        position: "relative",
-        backgroundColor: "black",
+    const workON = () => {
+        setWork({ transform: 'scale(1.1)' });
     }
-    /*from: { opacity: 0},
-    to { opacity: 1},*/
     
+    const workOFF = () => {
+        setWork({ transform: 'scale(1)' });
+    }
+
+    const personalON = () => {
+        setPersonal({ transform: 'scale(1.1)' });
+    }
     
+    const personalOFF = () => {
+        setPersonal({ transform: 'scale(1)' });
+    }
 
 
 
     return (
     <>
-        <div className="background">
+        <div style={style}>
             <div className="title-section">
                 <div className="title-info">
                     <h1>Kieran  O'Gara</h1>
@@ -129,21 +136,18 @@ const App = () => {
             </div>
 
             <div className="button-section">
-                <div className="button work">
+                <animated.div className="button work" style={work} onMouseEnter={workON} onMouseLeave={workOFF}>
                     <h3>{status}</h3>
-                </div>
-                <div className="button personal" onClick={handleClick}>
-                    <h3>{status}</h3>
-                </div>
+                </animated.div>
+                <animated.div className="button" style={personal} onMouseEnter={personalON} onMouseLeave={personalOFF} onClick={handleClick}>
+                    <div className="personal">
+                        {status}
+                    </div>
+                </animated.div>
             </div>
-            <footer className="contact">
-                <h2>Contact Me!</h2>  
-            </footer>
         </div>
     </>     
     );
 }
-
-
 
 export default App;
