@@ -1,17 +1,29 @@
 import React from "react";
 import '../Styles/Portfolio/Portfolio.css';
-import githubButton from '../assets/github.svg';
+import githubButton from '../assets/svgs/github.svg';
+import envelopeSolid from '../assets/svgs/envelope-solid.svg';
+import linkedin from '../assets/svgs/linkedin.svg';
+import mastadon from '../assets/svgs/mastodon.svg';
+import internetExplorer from '../assets/svgs/internet-explorer.svg';
 
 const Portfolio = () => {
     return (
         <>
             <div className="introScreen">
-                <div class="introContent">
+                <div className="introContent">
                     <div className="name">
                         <h1>Kieran O'Gara</h1>
                     </div>
-                    <div className="quickLinks">
-                        <img src={githubButton} alt="logo" />
+                    <div classname="introLinks">
+                        <div className="quickLinks">
+                            <ul>
+                                <li><img src={githubButton} alt="logo" /></li>
+                                <li><img src={envelopeSolid} alt="logo" /></li>
+                                <li><img src={linkedin} alt="logo" /></li>
+                                <li><img src={mastadon} alt="logo" /></li>
+                                <li><img src={internetExplorer} alt="logo" /></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

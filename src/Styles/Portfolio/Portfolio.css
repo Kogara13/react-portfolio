@@ -16,11 +16,25 @@ body {
   height: 100vh;
   width: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 .introScreen .introContent {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.introScreen .introContent .introLinks {
+  display: flex;
+  align-items: center;
+}
+.introScreen .introContent .name {
+  margin: 0;
+}
+.introScreen .introContent ul {
+  list-style: none;
+}
+.introScreen .introContent li {
+  display: inline-block;
+  width: 20px;
+  height: auto;
 }/*# sourceMappingURL=Portfolio.css.map */
