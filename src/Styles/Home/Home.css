@@ -33,6 +33,10 @@ body {
   border-radius: 10px;
 }
 .button-section .button .work {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   color: #e6cbcc;
 }
 .button-section .button .personal {
@@ -41,9 +45,4 @@ body {
   align-items: center;
   width: 100%;
   color: #8BC6FC;
-}
-
-.contact {
-  margin-top: 125px;
-  text-align: center;
-}/*# sourceMappingURL=App.css.map */
+}/*# sourceMappingURL=Home.css.map */
