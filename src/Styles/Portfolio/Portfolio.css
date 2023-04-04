@@ -20,20 +20,17 @@ body {
 }
 .introScreen .introContent {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-}
-.introScreen .introContent .introLinks {
-  display: flex;
   align-items: center;
 }
 .introScreen .introContent .name {
   margin: 0;
 }
-.introScreen .introContent ul {
+.introScreen .introContent .quickLinks ul {
   list-style: none;
 }
-.introScreen .introContent li {
+.introScreen .introContent .quickLinks li {
   display: inline-block;
   width: 20px;
   height: auto;

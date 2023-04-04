@@ -21,13 +21,9 @@ body{
 
     .introContent {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-
-        .introLinks {
-            display: flex;
-            align-items: center;
-        }
 
         .name {
             // font-size: 3rem;
@@ -35,13 +31,16 @@ body{
             margin: 0;
         }
 
-        ul {
-            list-style: none;
-        }
-        li {
-            display: inline-block;
-            width: 20px;
-            height: auto;
-        }
+        .quickLinks {
+            ul {
+                list-style: none;
+            }
+            li {
+                display: inline-block;
+                width: 20px;
+                height: auto;
+                margin
+            }
+        }  
     }
 }

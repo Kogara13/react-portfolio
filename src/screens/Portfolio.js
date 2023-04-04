@@ -14,18 +14,17 @@ const Portfolio = () => {
                     <div className="name">
                         <h1>Kieran O'Gara</h1>
                     </div>
-                    <div classname="introLinks">
-                        <div className="quickLinks">
-                            <ul>
-                                <li><img src={githubButton} alt="logo" /></li>
-                                <li><img src={envelopeSolid} alt="logo" /></li>
-                                <li><img src={linkedin} alt="logo" /></li>
-                                <li><img src={mastadon} alt="logo" /></li>
-                                <li><img src={internetExplorer} alt="logo" /></li>
-                            </ul>
-                        </div>
+                
+                    <div className="quickLinks">
+                        <ul>
+                            <li><img src={githubButton} alt="logo" /></li>
+                            <li><img src={envelopeSolid} alt="logo" /></li>
+                            <li><img src={linkedin} alt="logo" /></li>
+                            <li><img src={mastadon} alt="logo" /></li>
+                            <li><img src={internetExplorer} alt="logo" /></li>
+                        </ul>
                     </div>
-                </div>
+                </div>  
             </div>
 
             <div className="aboutMe">
