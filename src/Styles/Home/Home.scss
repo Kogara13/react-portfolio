@@ -22,10 +22,8 @@ body {
     }
 }
 
-
-
 .button-section{
-    margin-top: 125px;
+    margin-top: 100px;
     display: flex;
     justify-content: space-around;
     align-items:flex-end;
@@ -36,11 +34,15 @@ body {
         width: 19%;
         min-width: 360px;
         max-width: 415px;
-        height: 500px;
+        height: 450px;
         margin-bottom: 25px;
         background-color: $button-color;
         border-radius: 10px;
         .work {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
             color: $work-selected-color;
         }
         .personal {
@@ -51,9 +53,4 @@ body {
             color: $personal-selected-color;
         }     
     }
-}
-
-.contact{
-    margin-top: 125px;
-    text-align: center;
 }
