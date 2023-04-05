@@ -1,5 +1,6 @@
 import React from "react";
 import '../Styles/Portfolio/Portfolio.css';
+import picture from '../assets/images/profile.png'
 import githubButton from '../assets/svgs/github.svg';
 import envelopeSolid from '../assets/svgs/envelope-solid.svg';
 import linkedin from '../assets/svgs/linkedin.svg';
@@ -13,6 +14,9 @@ const Portfolio = () => {
                 <div className="introContent">
                     <div className="name">
                         <h1>Kieran O'Gara</h1>
+                    </div>
+                    <div>
+                        <img src={picture} alt="me" className="photo" />
                     </div>
                 
                     <div className="quickLinks">
@@ -35,7 +39,7 @@ const Portfolio = () => {
                 </div>
             </div>
 
-            <div class="projectIntro">
+            <div className="projectIntro">
                 <h2>Projects</h2>
                 <p>Here is a list of a few projects I've got under my belt</p>
             </div>
