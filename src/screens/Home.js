@@ -98,10 +98,10 @@ const Home = () => {
     }
     
     const style = {
-        backgroundColor: '#303030',
+        backgroundColor: '#222831',
         height: '100vh',
         position: 'relative',
-        backgroundImage: `radial-gradient(circle at ${gradient}% ${gradientY}%, white, black 75%)`,
+        backgroundImage: `radial-gradient(circle at ${gradient}% ${gradientY}%, white, #222831 75%)`,
     } 
 
     const workON = () => {
