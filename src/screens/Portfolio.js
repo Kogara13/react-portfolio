@@ -12,13 +12,12 @@ const Portfolio = () => {
         <>
             <div className="introScreen">
                 <div className="introContent">
-                    <div className="name">
-                        <h1>Kieran O'Gara</h1>
-                    </div>
                     <div>
                         <img src={picture} alt="me" className="photo" />
                     </div>
-                
+                    <div className="name">
+                        <h1>Kieran O'Gara</h1>
+                    </div>
                     <div className="quickLinks">
                         <ul>
                             <li><a href="https://github.com/Kogara13"><img src={githubButton} alt="logo" /></a></li>

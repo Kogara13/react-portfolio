@@ -29,15 +29,17 @@ body {
   width: 100%;
 }
 .introScreen .introContent .photo {
-  margin-bottom: 80px;
+  margin-bottom: 10px;
   max-width: 350px;
   min-height: auto;
 }
 .introScreen .introContent .name {
   margin: 0;
+  margin-bottom: 80px;
 }
 .introScreen .introContent .quickLinks {
-  margin-bottom: 170px;
+  display: flex;
+  margin-bottom: 50px;
 }
 .introScreen .introContent .quickLinks ul {
   background-color: #222831;
@@ -56,7 +58,7 @@ body {
 }
 
 .aboutMe {
-  height: 40vh;
+  min-height: 40vh;
   margin: 0;
   display: flex;
   justify-content: center;
@@ -122,4 +124,13 @@ body {
   height: 300px;
   background-color: #393E46;
   border-radius: 5px;
+}
+
+@media (pointer: coarse) {
+  .aboutPhotos {
+    display: none;
+  }
+  .aboutText {
+    width: 100%;
+  }
 }/*# sourceMappingURL=Portfolio.css.map */
